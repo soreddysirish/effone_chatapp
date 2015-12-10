@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users
-resources :users
+
+resources :users do
+  collection do
+    get :join_to_chat
+    get :online_users
+  end
+end
 root "users#index"
 
   # The priority is based upon order of creation: first created -> highest priority.

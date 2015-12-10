@@ -16,7 +16,8 @@
       <ul class="nav navbar-nav pull-right">
         <% if user_signed_in? %>
           <li>
-            <%= link_to "join to chat"%>
+        <%= link_to 'join to chat', join_to_chat_users_path %>
+
             <li>
               <%= link_to "Hi, #{current_user.email}" %>
             </li>

@@ -2,10 +2,12 @@ class UsersController < ApplicationController
   before_action :authenticate_user!,only: [:update, :destroy, :edit, :show, :index]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
+
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+     @users = User.all
+     current_user.update_attributes(status:false)
   end
 
   # GET /users/1
@@ -63,7 +65,14 @@ class UsersController < ApplicationController
   end
 
   def join_to_chat
-    
+   if user_signed_in?
+     current_user.update_attributes(status:true)
+     @details=User.where(:user_name => current_user.user_name)
+   end
+  end
+
+  def online_users
+    @online=User.online_users
   end
 
   private
