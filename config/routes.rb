@@ -4,7 +4,6 @@ Rails.application.routes.draw do
 resources :users do
   collection do
     get :join_to_chat
-    get :online_users
   end
 end
 root "users#index"

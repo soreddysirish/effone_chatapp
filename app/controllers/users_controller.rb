@@ -1,14 +1,15 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!,only: [:update, :destroy, :edit, :show, :index]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-
+  #around_filter :update_user_status, only: [:join_to_chat]
 
   # GET /users
   # GET /users.json
   def index
      @users = User.all
-     current_user.update_attributes(status:false)
+     current_user.update_attributes(status: false)
   end
+
 
   # GET /users/1
   # GET /users/1.json
@@ -68,14 +69,17 @@ class UsersController < ApplicationController
    if user_signed_in?
      current_user.update_attributes(status:true)
      @details=User.where(:user_name => current_user.user_name)
+     @online=User.online_users_list
    end
   end
 
-  def online_users
-    @online=User.online_users
-  end
-
   private
+  def update_user_status
+    if session[:current_user]= nil?
+      current_user.update_attributes(status: false)
+    end
+ end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
