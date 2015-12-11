@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
-
+  devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
+get '/auth/:provider/callback', to: 'users#create'
+#delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
 resources :users do
   collection do
     get :join_to_chat

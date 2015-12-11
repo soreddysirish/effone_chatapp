@@ -13,6 +13,10 @@ gem 'devise'
 gem 'simple_form'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem 'omniauth'
+gem "omniauth-github"
+
+
 group :development, :test do
   gem 'byebug'
 end
