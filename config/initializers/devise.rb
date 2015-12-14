@@ -216,7 +216,7 @@ Devise.setup do |config|
 
   # Set this configuration to false if you want /users/sign_out to sign out
   # only the current scope. By default, Devise signs out all scopes.
-  # config.sign_out_all_scopes = true
+   #config.sign_out_all_scopes = true
 
   # ==> Navigation configuration
   # Lists the formats that should be treated as navigational. Formats like
@@ -246,6 +246,8 @@ Devise.setup do |config|
   #   manager.default_strategies(scope: :user).unshift :some_external_strategy
   # end
     config.omniauth :github, "d0f8467758199d504a3c","b52f2301787e828e7ef74775684c575eb3d3dacb",:scope => 'user'
+    config.omniauth :linkedin, "753pwyn7u38h8p","YJwD7iUenM7IgJNB"
+
   # ==> Mountable engine configurations
   # When using Devise inside an engine, let's call it `MyEngine`, and this engine
   # is mountable, there are some extra configurations to be taken into account.

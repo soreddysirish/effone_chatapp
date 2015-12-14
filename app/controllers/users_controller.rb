@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!,only: [:update, :destroy, :edit, :show, :index]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   #around_filter :update_user_status, only: [:join_to_chat]
-
+  load_and_authorize_resource
   # GET /users
   # GET /users.json
   def index
@@ -71,6 +71,14 @@ class UsersController < ApplicationController
      @details=User.where(:user_name => current_user.user_name)
      @online=User.online_users_list
    end
+  end
+
+  def toggle
+    @user=User.find(params[:id])
+    if @user.update_attributes(banned:params[:banned])
+      flash[:notice]=" user is successfully banned"
+      render nothing:true
+    end
   end
 
   private

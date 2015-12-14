@@ -1,12 +1,17 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
+devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks', sessions: 'sessions'}
 get '/auth/:provider/callback', to: 'users#create'
+
 #delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
 resources :users do
   collection do
     get :join_to_chat
   end
+  member do
+  post :toggle
+  end
 end
+
 root "users#index"
 
   # The priority is based upon order of creation: first created -> highest priority.

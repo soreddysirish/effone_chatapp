@@ -11,10 +11,13 @@ gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 gem 'devise'
 gem 'simple_form'
+gem 'cancan'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'omniauth'
 gem "omniauth-github"
+gem 'omniauth-linkedin'
+gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
 
 
 group :development, :test do
