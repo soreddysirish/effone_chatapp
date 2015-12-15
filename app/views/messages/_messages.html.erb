@@ -1,0 +1,6 @@
+<% @messages.each do |msg| %>
+  <li style="list-style-type:none;">
+    <label class='label label-default'><%= msg.user.user_name %></label>
+    : <span> <%= msg.text %> </span>
+  </li>
+<% end %>

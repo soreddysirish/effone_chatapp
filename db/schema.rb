@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151214130020) do
+ActiveRecord::Schema.define(version: 20151215044527) do
 
   create_table "chatinghistories", force: :cascade do |t|
     t.integer  "user_id"
@@ -32,7 +32,6 @@ ActiveRecord::Schema.define(version: 20151214130020) do
 
   create_table "messages", force: :cascade do |t|
     t.string   "text"
-    t.string   "sender"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

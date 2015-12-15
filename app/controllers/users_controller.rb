@@ -19,6 +19,7 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
+    @user.messages.build
   end
 
   # GET /users/1/edit
@@ -77,6 +78,10 @@ class UsersController < ApplicationController
     @user=User.find(params[:id])
     if @user.update_attributes(banned:params[:banned])
       flash[:notice]=" user is successfully banned"
+      # if current_user.present? && current_user.banned?
+      #   current_user sign_out
+      #   redirect_to root_url
+      # end
       render nothing:true
     end
   end

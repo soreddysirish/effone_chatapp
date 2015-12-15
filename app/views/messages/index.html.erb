@@ -1,0 +1,17 @@
+<div class='row'>
+  <div class='col-sm-4', style: 'border-right: 2px solid gray'>
+
+    <% @online.each do |online| %>
+      <ul>
+        <li style="list-style-type:none;"> <%= online.try(:user_name)  %> </li>
+      </ul>
+    <% end %>
+  </div>
+  <div class='col-sm-8'>
+    <ul id="messages_list">
+      <%= render partial: 'messages' %>
+    </ul>
+
+    <%= render "form", message: @message %>
+  </div>
+</div>

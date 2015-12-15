@@ -6,6 +6,7 @@ get '/auth/:provider/callback', to: 'users#create'
 resources :users do
   collection do
     get :join_to_chat
+    resources :messages
   end
   member do
   post :toggle
