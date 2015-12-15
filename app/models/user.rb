@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-
+has_many :messages
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable,
@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
       end
     end
 
-    
+
 
     # def self.new_with_session(params, session)
     #    super.tap do |user|
