@@ -1,8 +1,12 @@
 class MessagesController < ApplicationController
    def index
-    @messages=Message.all
-     @online=User.online_users_list
-     @message=Message.new
+      @messages=Message.all
+      if user_signed_in?
+        current_user.update_attributes(status:true)
+        @details=User.where(:user_name => current_user.user_name)
+        @online=User.online_users_list-[current_user]
+        @message=Message.new
+      end
    end
 
   def new
@@ -20,6 +24,8 @@ class MessagesController < ApplicationController
   def show
     @message=Message.find(params[:id])
   end
+
+
 
   private
   def message_params

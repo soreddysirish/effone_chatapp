@@ -66,14 +66,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def join_to_chat
-   if user_signed_in?
-     current_user.update_attributes(status:true)
-     @details=User.where(:user_name => current_user.user_name)
-     @online=User.online_users_list
-   end
-  end
-
   def toggle
     @user=User.find(params[:id])
     if @user.update_attributes(banned:params[:banned])

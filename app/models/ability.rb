@@ -2,17 +2,18 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+    user ||=User.new
     # Define abilities for the passed in user here. For example:
     alias_action :create, :read, :update, :destroy, :to => :crud
     alias_action  :update, :destroy, :to => :ud
-
     if user.admin?
         can :manage, :all
       else
         can :read, User
         cannot :ud,User
       end
-    
+
+
     # The first argument to `can` is the action you are giving the user
     # permission to do.
     # If you pass :manage it will apply to every action. Other common actions

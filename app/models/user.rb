@@ -10,6 +10,7 @@ has_many :messages
      validates_presence_of :user_name
      enum role: [:admin]
 
+
      def self.from_omniauth(auth)
        where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
           user.email = auth.info.email
