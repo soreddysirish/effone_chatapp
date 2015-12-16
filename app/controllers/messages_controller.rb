@@ -1,12 +1,11 @@
 class MessagesController < ApplicationController
+  before_action :online_users_list,only: [:index,:create]
+  before_action :authenticate_user!
    def index
       @messages=Message.all
-      if user_signed_in?
-        current_user.update_attributes(status:true)
-        @details=User.where(:user_name => current_user.user_name)
-        @online=User.online_users_list-[current_user]
-        @message=Message.new
-      end
+        #@details=User.where(:user_name => current_user.user_name)
+        #@online=User.online_users_list-[current_user]
+      @message=Message.new
    end
 
   def new
@@ -28,6 +27,12 @@ class MessagesController < ApplicationController
 
 
   private
+
+  def online_users_list
+    current_user.update_attributes(status:true)
+    @online=User.online_users_list-[current_user]
+  end
+
   def message_params
     params.require(:message).permit(:text).merge(user_id:current_user.id)
   end

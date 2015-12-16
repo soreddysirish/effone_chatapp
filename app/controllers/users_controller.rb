@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
      @users = User.all
-     current_user.update_attributes(status: false)
+    current_user.update_attributes(status: true)
   end
 
 
@@ -19,7 +19,6 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
-    @user.messages.build
   end
 
   # GET /users/1/edit

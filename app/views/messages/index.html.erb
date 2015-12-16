@@ -1,12 +1,12 @@
 <div class='row'>
-  <div class='col-sm-4', style: 'border-right: 2px solid gray'>
+  <div class='col-sm-4 col-md-3', style: 'border-left: 2px solid black;'>
   <% @online.each do |online| %>
     <ul id="users_list">
       <li style="list-style-type:none;"> <%= online.user_name  %> </li>
     </ul>
   <% end %>
   </div>
-  <div class='col-sm-8'>
+  <div class='col-sm-8 col-md-9'>
     <ul id="messages_list">
       <%= render partial: 'messages' %>
     </ul>

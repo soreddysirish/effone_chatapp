@@ -10,5 +10,5 @@ $(document).ready ->
     return
 
   refreshingPartial()
-  setInterval refreshingPartial, 1000
+  setInterval refreshingPartial, 3000
   return
