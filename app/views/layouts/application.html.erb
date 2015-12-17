@@ -10,6 +10,10 @@
   <div id ="navbar">
 <%= render "layouts/nav" %>
 </div>
+<div>
+  <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>"><%= value %></div>
+    <% end %>
 <div id ="form_content">
 
 <%= yield %>

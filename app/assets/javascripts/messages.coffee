@@ -12,3 +12,5 @@ $(document).ready ->
   refreshingPartial()
   setInterval refreshingPartial, 3000
   return
+$(document).on "page:change", ->
+   $('#message_text').focus()

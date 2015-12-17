@@ -1,3 +1,45 @@
 // Place all the styles related to the messages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.onlineusers {
+    height: 100%;
+  }
+  #message_form
+  {
+    position: absolute;
+    width: 100;
+    margin-left: 29%;
+    margin-top:55%;
+  }
+  #messageform
+  {
+      border: 1px solid #2700FF;
+      background: rgba(255, 248, 220, 0.33);
+      overflow-y: scroll;
+      height: 500px;
+}
+
+#leftdiv {
+    height: 500px;
+    margin-right: 0%;
+    border: 1px solid #000000;
+}
+#current_user
+{
+float: right;
+border: 1px solid green;
+  background-color: beige;
+  color: black;
+  height: auto;
+  list-style-type: none;
+}
+#other_user
+{
+  list-style-type:none;
+  clear:both;
+  float: left;
+  border: 1px solid green;
+    background-color: beige;
+    color: black;
+    height: auto;
+}

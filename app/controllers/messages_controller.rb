@@ -1,7 +1,7 @@
 class MessagesController < ApplicationController
-  before_filter :online_users_list,only: [:index,:create]
   before_action :authenticate_user!
    def index
+     current_user.update_attributes(status:true)
       @messages=Message.all
       @message=Message.new
       @online=User.online_users_list-[current_user]
@@ -26,11 +26,6 @@ class MessagesController < ApplicationController
 
 
   private
-
-  def online_users_list
-    current_user.update_attributes(status:true)
-  #  @online=User.online_users_list-[current_user]
-  end
 
   def message_params
     params.require(:message).permit(:text).merge(user_id:current_user.id)

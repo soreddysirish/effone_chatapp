@@ -1,14 +1,16 @@
 <div class='row'>
-  <div class='col-sm-3 col-md-4'>
-    <ul id="users_list" %>
-      <%= render partial: 'onlineusers' %>
-  </ul>
+  <div class='col-sm-3 col-md-3' id= "leftdiv">
+    <div class="onlineusers">
+        <ul id="users_list">
+          <%= render partial: 'onlineusers' %>
+      </ul>
+    </div>
   </div>
-
-  <div class='col-sm-9 col-md-8'>
+  <div class='col-sm-9 col-md-9' id ="messageform">
     <ul id="messages_list">
       <%= render partial: 'messages' %>
-    </ul>
-    <%= render "form", message: @message %>
-  </div>
+    </div>
+  <div id="message_form">
+  <%= render "form", message: @message %>
+</div>
 </div>
