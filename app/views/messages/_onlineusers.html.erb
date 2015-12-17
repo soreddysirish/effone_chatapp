@@ -1,0 +1,5 @@
+<% @online=User.online_users_list %>
+<% @online=@online-[current_user] %>
+<% @online.each do |online|%>
+   <li style="list-style-type:none"><%=link_to  online.user_name,  individualchats_path(online) %></li>
+<% end %>

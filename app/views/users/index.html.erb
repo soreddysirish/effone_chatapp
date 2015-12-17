@@ -31,7 +31,7 @@ $(document).ready(function() {
     <tr>
       <th>User name </th>
       <th> email </th>
-      <th> last_sign_in_at </th>
+
       <th> Block/unblock user </th>
       <th colspan="3"></th>
     </tr>
@@ -43,10 +43,8 @@ $(document).ready(function() {
       <tr>
         <td><%= user.user_name %></td>
         <td><%= user.email %></td>
-        <td><%= (user.last_sign_in_at).strftime('%a, %d %b %Y %H:%M:%S')%></td>
-        <!-- <td><%= (user.created_at).strftime('%a, %d %b %Y %H:%M:%S') %></td> -->
         <td>
-          <% if current_user.admin? %>
+          <% if current_user.present? && current_user.admin? %>
                 <%= check_box_tag 'banned', user.id, user.banned,class:'checkboxforblocunblockuser'%>
                 <span>
                 <% if user.banned==true %>

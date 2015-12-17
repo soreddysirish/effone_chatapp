@@ -1,3 +1,3 @@
 <%= simple_form_for @message, method: :post, remote: true, input_html: {multipart: true} do |f| %>
-<%=f.input :text %>
+<%= f.input :text, :required => true %>
 <% end %>

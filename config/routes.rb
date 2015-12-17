@@ -5,11 +5,12 @@ get '/auth/:provider/callback', to: 'users#create'
 #delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
 resources :users do
   collection do
-    get :join_to_chat
     resources :messages
+
   end
   member do
   post :toggle
+    resources :individualchats
   end
 end
 

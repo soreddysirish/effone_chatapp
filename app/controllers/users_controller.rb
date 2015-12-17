@@ -2,12 +2,16 @@ class UsersController < ApplicationController
   before_action :authenticate_user!,only: [:update, :destroy, :edit, :show, :index]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   #around_filter :update_user_status, only: [:join_to_chat]
-  load_and_authorize_resource
+  #before_action :load_company, only: :create
+
+  load_and_authorize_resource except: [:create]
   # GET /users
   # GET /users.json
   def index
      @users = User.all
-    current_user.update_attributes(status: true)
+    if current_user.present?
+      current_user.update_attributes(status: true)
+    end
   end
 
 
@@ -29,16 +33,21 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    if @user.save
+      redirect_to root_url
+    else
+      render "new"
     end
+
+    # respond_to do |format|
+    #   if @user.save
+    #     format.html { redirect_to @user, notice: 'User was successfully created.' }
+    #     format.json { render :show, status: :created, location: @user }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @user.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /users/1
@@ -89,8 +98,11 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
     end
 
+    def load_company
+    @user = User.new(user_params)
+  end
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-    params.require(:user).permit(:email,:password,:password_confirmation,:user_name,:current_sign_in_at)
+     params.require(:user).permit(:email, :password, :password_confirmation, :user_name,:current_sign_in_at)
     end
 end

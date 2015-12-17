@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151215044527) do
+ActiveRecord::Schema.define(version: 20151216104611) do
 
   create_table "chatinghistories", force: :cascade do |t|
     t.integer  "user_id"
@@ -29,6 +29,15 @@ ActiveRecord::Schema.define(version: 20151215044527) do
   end
 
   add_index "identities", ["user_id"], name: "index_identities_on_user_id"
+
+  create_table "individualchats", force: :cascade do |t|
+    t.text     "message"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "individualchats", ["user_id"], name: "index_individualchats_on_user_id"
 
   create_table "messages", force: :cascade do |t|
     t.string   "text"

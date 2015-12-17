@@ -1,0 +1,2 @@
+module IndividualchatsHelper
+end

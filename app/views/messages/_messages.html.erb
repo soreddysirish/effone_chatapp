@@ -1,6 +1,10 @@
 <% @messages.each do |msg| %>
   <li style="list-style-type:none;">
     <label class='label label-default'><%= msg.user.user_name %></label>
-    : <span> <%= msg.text %> </span>
+    <% if current_user.user_name == msg.user.user_name %>
+     <span class ="msgRight"> <%= msg.text %> </span>
+    <% else %>
+     <span class ="msgLeft"> <%= msg.text %> </span>
+    <% end %>
   </li>
 <% end %>
